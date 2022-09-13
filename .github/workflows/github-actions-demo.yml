@@ -14,46 +14,14 @@ jobs:
       - name: Checkout
       - uses: actions/checkout@v3
 
-      # - uses: pnpm/action-setup@v2.0.1
-      # - name: Install pnpm
-      #   id: pnpm-install
-      #   with:
-      #     version: 7
-      #     run_install: false
+      - uses: pnpm/action-setup@v2.0.1
+      - name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
 
-      # - name: Get pnpm store directory
-      #   id: pnpm-cache
-      #   run: |
-      #     echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      # - uses: actions/cache@v3
-      # name: Setup pnpm cache
-      # with:
-      # path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-      # key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      # restore-keys: |
-      # ${{ runner.os }}-pnpm-store-
-
-#
-# - name: Install dependencies
-# run: pnpm install
-
-# - uses: actions/cache@v3
-# - uses: nrwl/nx-set-shas@v3
-# - uses: pnpm/action-setup@v2.2.2
-# - run: pnpm config set store-dir .pnpm-store
-# - run: NX_HEAD=$GITHUB_SHA
-# - run: NX_BASE=${GITHUB_BASE_REF}
-# - run: echo 📑 NX_HEAD=${NX_HEAD}
-# - run: echo 📑 NX_BASE=${NX_BASE}
-# - run:  | # Case when first commit on a branch don't appear as a MR and has previous hash as all 0s
-#         if [ "$NX_BASE" = "0000000000000000000000000000000000000000" ]; then
-#         NX_BASE=$(git log --format="%H" -n 1 HEAD~)
-#         fi
-# - run: echo 📑 new NX_BASE=${NX_BASE}
-
-# - run: npx nx workspace-lint
-# - run: npx nx format:check
-# - run: npx nx affected --target=lint --parallel=3
-# - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
-# - run: npx nx affected --target=build --parallel=3
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
