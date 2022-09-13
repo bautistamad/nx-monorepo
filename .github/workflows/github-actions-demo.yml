@@ -36,7 +36,7 @@ jobs:
         run: pnpm install
 
       - name: Nrwl Nx
-      - uses: mansagroup/nrwl-nx-action@v2
+        uses: mansagroup/nrwl-nx-action@v2
         with:
           targets: build
           affected: 'true' # Defaults to true, therefore optional
