@@ -15,7 +15,6 @@ jobs:
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
-      - run: npm ci
       - run: pnpm config set store-dir .pnpm-store
       - run: NX_HEAD=$CI_COMMIT_SHA
       - run: NX_BASE=${CI_MERGE_REQUEST_DIFF_BASE_SHA:-$CI_COMMIT_BEFORE_SHA}
