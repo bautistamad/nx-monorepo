@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: wilab/pnpm-monorepo
+      image: wilab/pnpm-monorepo:v0.0.4
     steps:
       - uses: actions/checkout@v2
         with:
