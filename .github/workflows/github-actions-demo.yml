@@ -11,4 +11,6 @@ jobs:
     container:
       image: wilab/pnpm-monorepo:v0.0.4
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Checkout
+      - uses: actions/checkout@v3
+      
