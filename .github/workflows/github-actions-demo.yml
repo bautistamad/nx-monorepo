@@ -11,6 +11,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v3
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
 
       - uses: pnpm/action-setup@v2.0.1
         name: Install pnpm
@@ -18,7 +25,7 @@ jobs:
         with:
           version: 7
           run_install: false
-        
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -44,4 +51,4 @@ jobs:
         uses: mansagroup/nrwl-nx-action@v2
         with:
           targets: build
-          affected: 'true' # Defaults to true, therefore optional
+          affected: "true" # Defaults to true, therefore optional
