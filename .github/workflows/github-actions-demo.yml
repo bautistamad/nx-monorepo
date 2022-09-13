@@ -11,17 +11,4 @@ jobs:
     container:
       image: wilab/pnpm-monorepo:v0.0.4
     steps:
-      - name: Checkout
-      - uses: actions/checkout@v3
-
-      - uses: pnpm/action-setup@v2.0.1
-      - name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
