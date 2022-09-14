@@ -50,10 +50,6 @@ jobs:
         with:
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
 
       - uses: pnpm/action-setup@v2.0.1
         name: Install pnpm
@@ -87,4 +83,9 @@ jobs:
       - run: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD --target=lint --parallel=3
       - run: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD --target=test --parallel=3 --ci --code-coverage
       - run: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD --target=build --parallel=3
-#
+
+
+# - name: Get pnpm store directory
+        # id: pnpm-cache
+        # run: |
+          # echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
