@@ -46,7 +46,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    
+
       - uses: actions/checkout@v2
         with:
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
@@ -63,6 +63,9 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+            
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v3
