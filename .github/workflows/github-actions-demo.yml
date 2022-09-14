@@ -66,7 +66,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          
+
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
@@ -84,7 +84,6 @@ jobs:
           echo "BASE: ${{ env.NX_BASE }}"
           echo "HEAD: ${{ env.NX_HEAD }}"
       - run: pnpm nx workspace-lint --base=$NX_BASE --head=$NX_HEAD
-      - run: pnpm nx format:check
       - run: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD --target=lint --parallel=3
       - run: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD --target=test --parallel=3 --ci --code-coverage
       - run: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD --target=build --parallel=3
